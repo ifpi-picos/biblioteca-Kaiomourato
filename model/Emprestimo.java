@@ -76,7 +76,6 @@ public class Emprestimo {
         this.devolvido = devolvido;
     }
 
-    // Métodos Específicos
 
     public void registrarDevolucao() {
         this.dataDevolucaoReal = LocalDate.now();

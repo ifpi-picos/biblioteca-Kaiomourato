@@ -5,6 +5,7 @@ import model.Livro;
 import model.Usuario;
 import repository.EmprestimoRepository;
 import repository.LivroRepository;
+import service.notificar.*;
 
 import java.util.List;
 
@@ -43,7 +44,8 @@ public class EmprestimoService {
     livro.setDisponivel(false);
 
     usuario.adicionarLivroNaCesta(livro);
-
+    Notificacao notificacao = new NotificarEmprestimo();
+    notificacao.enviarEmail();
     return emprestimo;
 }
 
@@ -60,6 +62,8 @@ public class EmprestimoService {
 
         
         emprestimo.setDevolvido(true);
+        Notificacao notificacao = new NotificarDevolucao();
+        notificacao.enviarEmail();
 
     }
 
@@ -73,3 +77,4 @@ public class EmprestimoService {
         return emprestimoRepository.getEmprestimosPorUsuario(usuario); 
     }
 }
+
